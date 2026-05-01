@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AΦA</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="workspace" aria-label="Quiz builder">
+        <header class="topbar">
+          <div class="brand-lockup">
+            <img src="study-board.svg" alt="" class="brand-mark" />
+            <div>
+              <p class="eyebrow">Study tool</p>
+              <h1>AΦA</h1>
+            </div>
+          </div>
+          <div class="scoreboard" aria-live="polite">
+            <span id="progressText">0 of 0</span>
+            <strong id="scoreText">Score: 0</strong>
+          </div>
+        </header>
+
+        <div class="layout">
+          <aside class="setup-panel" aria-label="Question setup">
+            <div class="panel-heading">
+              <h2>Your Material</h2>
+              <button class="icon-button" id="clearButton" type="button" aria-label="Clear saved quiz" title="Clear saved quiz">
+                <span aria-hidden="true">↺</span>
+              </button>
+            </div>
+
+            <div class="mode-tabs" aria-label="Practice mode">
+              <button id="quizModeButton" type="button" class="mode-tab active">IL Chapters</button>
+              <button id="quizTwoModeButton" type="button" class="mode-tab">Leadership</button>
+              <button id="quizThreeModeButton" type="button" class="mode-tab">Jewel History</button>
+              <button id="orderModeButton" type="button" class="mode-tab">Chapter Lineage</button>
+              <button id="matchModeButton" type="button" class="mode-tab">General Facts</button>
+              <button id="slotsModeButton" type="button" class="mode-tab">Charter Members</button>
+              <button id="poemsModeButton" type="button" class="mode-tab">Poems</button>
+              <button id="paragraphsModeButton" type="button" class="mode-tab">Additional Info</button>
+            </div>
+
+            <div id="quizSetup">
+              <label for="quizTitleInput">Section title</label>
+              <input id="quizTitleInput" type="text" placeholder="Example: IL Chapters" />
+
+              <label for="quizInput">Paste each item as <strong>question | answer</strong></label>
+              <textarea id="quizInput" spellcheck="true"></textarea>
+
+              <div class="button-row">
+                <button id="loadButton" type="button">Load Quiz</button>
+                <button id="sampleButton" type="button" class="secondary">Sample</button>
+              </div>
+
+              <p class="helper">
+                Add optional wrong answers after the correct one: Question | Correct | Wrong | Wrong
+              </p>
+            </div>
+
+            <div id="quizTwoSetup" hidden>
+              <label for="quizTwoTitleInput">Section title</label>
+              <input id="quizTwoTitleInput" type="text" placeholder="Example: Leadership" />
+
+              <label for="quizTwoInput">Paste each item as <strong>question | answer</strong></label>
+              <textarea id="quizTwoInput" spellcheck="true"></textarea>
+
+              <div class="button-row">
+                <button id="loadQuizTwoButton" type="button">Load Quiz</button>
+                <button id="sampleQuizTwoButton" type="button" class="secondary">Sample</button>
+              </div>
+
+              <p class="helper">
+                Add optional wrong answers after the correct one: Question | Correct | Wrong | Wrong
+              </p>
+            </div>
+
+            <div id="quizThreeSetup" hidden>
+              <label for="quizThreeTitleInput">Section title</label>
+              <input id="quizThreeTitleInput" type="text" placeholder="Example: Jewel History" />
+
+              <label for="quizThreeInput">Paste each item as <strong>question | answer</strong></label>
+              <textarea id="quizThreeInput" spellcheck="true"></textarea>
+
+              <div class="button-row">
+                <button id="loadQuizThreeButton" type="button">Load Quiz</button>
+                <button id="sampleQuizThreeButton" type="button" class="secondary">Sample</button>
+              </div>
+
+              <p class="helper">
+                Add optional wrong answers after the correct one: Question | Correct | Wrong | Wrong
+              </p>
+            </div>
+
+            <div id="orderSetup" hidden>
+              <label for="orderTitleInput">Section title</label>
+              <input id="orderTitleInput" type="text" placeholder="Example: Chapter Lineage" />
+
+              <label for="orderInput">Paste items in the correct order</label>
+              <textarea id="orderInput" spellcheck="true"></textarea>
+
+              <div class="button-row">
+                <button id="loadOrderButton" type="button">Load Sorts</button>
+                <button id="sampleOrderButton" type="button" class="secondary">Sample</button>
+              </div>
+
+              <p class="helper">
+                Add a blank line between sorts. For a sort title, use a line ending with a colon.
+              </p>
+            </div>
+
+            <div id="matchSetup" hidden>
+              <label for="matchTitleInput">Section title</label>
+              <input id="matchTitleInput" type="text" placeholder="Example: General Facts" />
+
+              <label for="matchInput">Paste each item as <strong>term | match</strong></label>
+              <textarea id="matchInput" spellcheck="true"></textarea>
+
+              <div class="button-row">
+                <button id="loadMatchButton" type="button">Load Matches</button>
+                <button id="sampleMatchButton" type="button" class="secondary">Sample</button>
+              </div>
+
+              <p class="helper">
+                Put one term and its matching answer on each line.
+              </p>
+            </div>
+
+            <div id="slotsSetup" hidden>
+              <label for="slotsTitleInput">Section title</label>
+              <input id="slotsTitleInput" type="text" placeholder="Example: Charter Members" />
+
+              <label for="slotsInput">Paste the 10 correct terms</label>
+              <textarea id="slotsInput" spellcheck="true"></textarea>
+
+              <div class="button-row">
+                <button id="loadSlotsButton" type="button">Load Members</button>
+                <button id="sampleSlotsButton" type="button" class="secondary">Sample</button>
+              </div>
+
+              <p class="helper">
+                Put one term on each line. The first 10 terms become the slots.
+              </p>
+            </div>
+
+            <div id="poemsSetup" hidden>
+              <label for="poemsTitleInput">Section title</label>
+              <input id="poemsTitleInput" type="text" placeholder="Example: Poetry Reader" />
+
+              <label for="poemsInput">Paste each poem as <strong>Title:</strong> then the full poem</label>
+              <textarea id="poemsInput" spellcheck="true"></textarea>
+
+              <div class="button-row">
+                <button id="loadPoemsButton" type="button">Load Poems</button>
+                <button id="samplePoemsButton" type="button" class="secondary">Sample</button>
+              </div>
+
+              <p class="helper">
+                Add a blank line between poems. Use your own poem text here.
+              </p>
+            </div>
+
+            <div id="paragraphsSetup" hidden>
+              <label for="paragraphsTitleInput">Section title</label>
+              <input id="paragraphsTitleInput" type="text" placeholder="Example: Additional Notes" />
+
+              <label for="paragraphsInput">Type or paste multiple paragraphs</label>
+              <textarea id="paragraphsInput" spellcheck="true"></textarea>
+
+              <div class="button-row">
+                <button id="loadParagraphsButton" type="button">Load Info</button>
+                <button id="sampleParagraphsButton" type="button" class="secondary">Sample</button>
+              </div>
+
+              <p class="helper">
+                Separate paragraphs with a blank line.
+              </p>
+            </div>
+
+            <div class="stats-grid" aria-label="Quiz statistics">
+              <div>
+                <span id="totalCount">0</span>
+                <small id="totalLabel">Questions</small>
+              </div>
+              <div>
+                <span id="bestScore">0%</span>
+                <small>Best</small>
+              </div>
+            </div>
+          </aside>
+
+          <section class="quiz-panel" aria-label="Active quiz">
+            <div class="quiz-card">
+              <div class="card-topline">
+                <span id="questionNumber">Question 1</span>
+                <span id="feedbackTag" class="tag">Ready</span>
+              </div>
+
+              <p id="sectionTitle" class="section-title">Untitled section</p>
+
+              <div id="orderNavigator" class="order-navigator" hidden>
+                <button id="previousSortButton" class="icon-button" type="button" aria-label="Previous order sort" title="Previous order sort">
+                  <span aria-hidden="true">←</span>
+                </button>
+                <span id="sortPositionText">Sort 1 of 1</span>
+                <button id="nextSortButton" class="icon-button" type="button" aria-label="Next order sort" title="Next order sort">
+                  <span aria-hidden="true">→</span>
+                </button>
+              </div>
+
+              <h2 id="questionText">Add your quiz material to begin.</h2>
+
+              <div id="choiceList" class="choice-list" aria-label="Answer choices"></div>
+
+              <div id="sortList" class="sort-list" aria-label="Sortable items" hidden></div>
+
+              <div id="matchBoard" class="match-board" aria-label="Matching terms" hidden></div>
+
+              <div id="slotsBoard" class="slots-board" aria-label="Ten term slots" hidden>
+                <div id="slotsGrid" class="slots-grid"></div>
+                <label class="slot-entry-label" for="slotAnswerInput">Type a term</label>
+                <input id="slotAnswerInput" type="text" autocomplete="off" disabled />
+              </div>
+
+              <div id="poemsBoard" class="poems-board" aria-label="Poem reader" hidden>
+                <label for="poemSelect">Choose a poem</label>
+                <select id="poemSelect"></select>
+                <article class="poem-display">
+                  <h3 id="poemDisplayTitle"></h3>
+                  <pre id="poemDisplayText"></pre>
+                </article>
+              </div>
+
+              <div id="paragraphsBoard" class="paragraphs-board" aria-label="Paragraph reader" hidden></div>
+
+              <div class="button-row quiz-actions">
+                <button id="checkButton" type="button" disabled>Check</button>
+                <button id="nextButton" type="button" class="secondary" disabled>Next</button>
+              </div>
+
+              <div id="feedback" class="feedback" role="status" aria-live="polite"></div>
+            </div>
+
+            <div class="review-panel">
+              <div class="panel-heading">
+                <h2>Review</h2>
+                <button id="restartButton" type="button" class="secondary" disabled>Restart</button>
+              </div>
+              <ul id="reviewList" class="review-list"></ul>
+            </div>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
