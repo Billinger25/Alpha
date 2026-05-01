@@ -162,7 +162,7 @@ Programs the Rho Zeta Lambda chapter participates in | Alpha Quest, Go-to-High S
 
 const defaultSlots = `Michael Asque
 Michael Bates
-Kevon Garder
+Kevon Gardner
 Samuel Graham Jr.
 Michael McAfee
 Ryzell McKinney
@@ -264,7 +264,7 @@ Jewel Line
 AKOMA: 
 Ascending Kings Overcoming Misfortune Adversity`;
 
-const bakedContentVersion = "2026-05-01-current-content";
+const bakedContentVersion = "2026-05-01-charter-members-correction";
 
 const state = {
   mode: "quiz",
